@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+    <!-- قلب‌های شناور -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <!-- صفحه اول -->
+    <div class="container">
+        <div class="welcome-page" id="welcomePage">
+            <div class="love-text">
+                گاهی یک نگاه، یک لحظه، یک اتفاق کوچک...
+                می‌تواند تمام دنیای آدم را زیر و رو کند
+            </div>
+            <button class="enter-btn" onclick="enterMainPage()">
+                <i class="fas fa-play"></i> کشف کن
+            </button>
+            <div class="decoration">
+                <div class="decoration-item"></div>
+                <div class="decoration-item"></div>
+                <div class="decoration-item"></div>
+            </div>
+        </div>
+
+        <!-- صفحه اصلی -->
+        <div class="main-page" id="mainPage">
+            <div class="photo-container">
+                <img src="./img/hasti.png" alt="عکس" class="user-photo">
+            </div>
+
+            <div class="content">
+                <div class="beautiful-text">
+                    زیبایی در سادگی نیست، در عمق است. در چیزی که می‌بینیم نیست، در چیزی است که احساس می‌کنیم. این فقط یک
+                    صفحه نیست، دریچه‌ای است به جهانی از احساسات ناب...
+                </div>
+
+                <div class="media-section">
+                    <!-- پخش کننده موسیقی ساده -->
+                    <div class="simple-music-player">
+                        <div class="player-title">ملودی دلنشین</div>
+
+                        <div class="progress-area">
+                            <div class="progress-bar" id="progressBar">
+                                <div class="progress" id="progress"></div>
+                            </div>
+                            <div class="timer">
+                                <span id="currentTime">0:00</span>
+                                <span id="duration">0:00</span>
+                            </div>
+                        </div>
+
+                        <div class="controls">
+                            <button class="control-btn" id="prevBtn">
+                                <i class="fas fa-step-backward"></i>
+                            </button>
+                            <button class="control-btn play-pause" id="playPauseBtn">
+                                <i class="fas fa-play" id="playPauseIcon"></i>
+                            </button>
+                            <button class="control-btn" id="nextBtn">
+                                <i class="fas fa-step-forward"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="calendar">
+                        <div class="calendar-header">
+                            <span>فروردین</span>
+                        </div>
+                        <div class="calendar-grid">
+                            <!-- روزهای تقویم -->
+                            <div class="calendar-day heart">♡</div>
+                            <div class="calendar-day normal">۲</div>
+                            <div class="calendar-day normal">۳</div>
+                            <div class="calendar-day normal">۴</div>
+                            <div class="calendar-day normal">۵</div>
+                            <div class="calendar-day normal">۶</div>
+                            <div class="calendar-day normal">۷</div>
+                            <div class="calendar-day normal">۸</div>
+                            <div class="calendar-day normal">۹</div>
+                            <div class="calendar-day normal">۱۰</div>
+                            <div class="calendar-day normal">۱۱</div>
+                            <div class="calendar-day normal">۱۲</div>
+                            <div class="calendar-day normal">۱۳</div>
+                            <div class="calendar-day normal">۱۴</div>
+                            <div class="calendar-day normal">۱۵</div>
+                            <div class="calendar-day normal">۱۶</div>
+                            <div class="calendar-day normal">۱۷</div>
+                            <div class="calendar-day normal">۱۸</div>
+                            <div class="calendar-day normal">۱۹</div>
+                            <div class="calendar-day normal">۲۰</div>
+                            <div class="calendar-day normal">۲۱</div>
+                            <div class="calendar-day normal">۲۲</div>
+                            <div class="calendar-day normal">۲۳</div>
+                            <div class="calendar-day normal">۲۴</div>
+                            <div class="calendar-day normal">۲۵</div>
+                            <div class="calendar-day normal">۲۶</div>
+                            <div class="calendar-day normal">۲۷</div>
+                            <div class="calendar-day normal">۲۸</div>
+                            <div class="calendar-day normal">۲۹</div>
+                            <div class="calendar-day normal">۳۰</div>
+                            <div class="calendar-day normal">۳۱</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="loveMusic">
+        <source src="./mus/hasti.mp3" type="audio/mpeg">
+        مرورگر شما از پخش کننده صدا پشتیبانی نمی‌کند.
+    </audio>
+
+    <script src="./main.js"></script>
+</body>
+
+</html>
