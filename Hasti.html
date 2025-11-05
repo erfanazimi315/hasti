@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>هدیه ویژه</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            line-height: 1.6;
+            padding: 20px;
+            position: relative;
+            touch-action: manipulation;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            margin: 20px;
+        }
+
+        /* صفحه اول */
+        .welcome-page {
+            background: rgba(15, 15, 35, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 50px 35px;
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.1),
+                inset 0 0 20px rgba(255, 255, 255, 0.05);
+            animation: fadeIn 1.5s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .welcome-page::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ff6b6b, #ffa36c, #ffe66d, #6bcf7f, #51cfed, #6b7bff, #ff6b6b);
+            background-size: 200% 100%;
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        .love-text {
+            font-size: 22px;
+            color: #fff;
+            line-height: 1.8;
+            margin-bottom: 35px;
+            text-align: center;
+            font-weight: 300;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .love-text::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ff6b6b, transparent);
+            margin: 25px auto 0;
+        }
+
+        .enter-btn {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e6b 100%);
+            color: white;
+            border: none;
+            padding: 16px 45px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow:
+                0 5px 15px rgba(255, 107, 107, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            font-weight: 500;
+        }
+
+        .enter-btn:hover {
+            transform: translateY(-5px);
+            box-shadow:
+                0 10px 25px rgba(255, 107, 107, 0.6),
+                0 0 0 1px rgba(255, 255, 255, 0.2);
+        }
+
+        .enter-btn::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.7s;
+        }
+
+        .enter-btn:hover::after {
+            left: 100%;
+        }
+
+        .decoration {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .decoration-item {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ff6b6b;
+            opacity: 0.7;
+            animation: pulse 2s infinite;
+        }
+
+        .decoration-item:nth-child(2) {
+            background: #6bcf7f;
+            animation-delay: 0.3s;
+        }
+
+        .decoration-item:nth-child(3) {
+            background: #51cfed;
+            animation-delay: 0.6s;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+
+            50% {
+                transform: scale(1.5);
+                opacity: 1;
+            }
+        }
+
+        /* صفحه اصلی */
+        .main-page {
+            display: none;
+            background: rgba(15, 15, 35, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.1),
+                inset 0 0 20px rgba(255, 255, 255, 0.05);
+            animation: slideUp 1s ease-out;
+            position: relative;
+        }
+
+        .main-page::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ff6b6b, #ffa36c, #ffe66d, #6bcf7f, #51cfed, #6b7bff, #ff6b6b);
+            background-size: 200% 100%;
+            animation: shimmer 3s linear infinite;
+        }
+
+        .photo-container {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 30% 70%, rgba(255, 107, 107, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(107, 207, 127, 0.2) 0%, transparent 50%);
+        }
+
+        .user-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .content {
+            padding: 35px;
+        }
+
+        .beautiful-text {
+            font-size: 18px;
+            color: #fff;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 300;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .media-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        /* پخش کننده موسیقی ساده */
+        .simple-music-player {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .player-title {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #fff;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .progress-area {
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            height: 6px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            cursor: pointer;
+            margin-bottom: 5px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ff6b6b, #6b7bff);
+            border-radius: 10px;
+            transition: width 0.1s linear;
+            position: relative;
+        }
+
+        .progress::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .timer {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            margin-top: 15px;
+        }
+
+        .control-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .control-btn:hover {
+            background: rgba(255, 107, 107, 0.3);
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .play-pause {
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e6b);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .play-pause:hover {
+            background: linear-gradient(135deg, #ff8e6b, #ff6b6b);
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.6);
+        }
+
+        .calendar {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #fff;
+            font-weight: 500;
+            font-size: 16px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+        }
+
+        .calendar-day {
+            height: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 400;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .calendar-day.header {
+            background: transparent;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+            border: none;
+            cursor: default;
+        }
+
+        .calendar-day.normal {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .calendar-day.normal:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.1);
+        }
+
+        .calendar-day.heart {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e6b 100%);
+            color: white;
+            position: relative;
+            animation: pulse-heart 2s infinite;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        @keyframes pulse-heart {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        /* انیمیشن‌ها */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-out {
+            animation: fadeOut 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            to {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+        }
+
+        /* طراحی واکنش‌گرا */
+        @media (max-width: 600px) {
+            .media-section {
+                flex-direction: column;
+            }
+
+            .container {
+                margin: 10px;
+            }
+
+            .content {
+                padding: 25px;
+            }
+
+            .welcome-page {
+                padding: 40px 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- قلب‌های شناور -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <!-- صفحه اول -->
+    <div class="container">
+        <div class="welcome-page" id="welcomePage">
+            <div class="love-text">
+                گاهی یک نگاه، یک لحظه، یک اتفاق کوچک...
+                می‌تواند تمام دنیای آدم را زیر و رو کند
+            </div>
+            <button class="enter-btn" onclick="enterMainPage()">
+                <i class="fas fa-play"></i> کشف کن
+            </button>
+            <div class="decoration">
+                <div class="decoration-item"></div>
+                <div class="decoration-item"></div>
+                <div class="decoration-item"></div>
+            </div>
+        </div>
+
+        <!-- صفحه اصلی -->
+        <div class="main-page" id="mainPage">
+            <div class="photo-container">
+                <img src="./img/hasti.png" alt="عکس" class="user-photo">
+            </div>
+
+            <div class="content">
+                <div class="beautiful-text">
+                    زیبایی در سادگی نیست، در عمق است. در چیزی که می‌بینیم نیست، در چیزی است که احساس می‌کنیم. این فقط یک
+                    صفحه نیست، دریچه‌ای است به جهانی از احساسات ناب...
+                </div>
+
+                <div class="media-section">
+                    <!-- پخش کننده موسیقی ساده -->
+                    <div class="simple-music-player">
+                        <div class="player-title">ملودی دلنشین</div>
+
+                        <div class="progress-area">
+                            <div class="progress-bar" id="progressBar">
+                                <div class="progress" id="progress"></div>
+                            </div>
+                            <div class="timer">
+                                <span id="currentTime">0:00</span>
+                                <span id="duration">0:00</span>
+                            </div>
+                        </div>
+
+                        <div class="controls">
+                            <button class="control-btn" id="prevBtn">
+                                <i class="fas fa-step-backward"></i>
+                            </button>
+                            <button class="control-btn play-pause" id="playPauseBtn">
+                                <i class="fas fa-play" id="playPauseIcon"></i>
+                            </button>
+                            <button class="control-btn" id="nextBtn">
+                                <i class="fas fa-step-forward"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="calendar">
+                        <div class="calendar-header">
+                            <span>فروردین</span>
+                        </div>
+                        <div class="calendar-grid">
+                            <!-- روزهای تقویم -->
+                            <div class="calendar-day heart">♡</div>
+                            <div class="calendar-day normal">۲</div>
+                            <div class="calendar-day normal">۳</div>
+                            <div class="calendar-day normal">۴</div>
+                            <div class="calendar-day normal">۵</div>
+                            <div class="calendar-day normal">۶</div>
+                            <div class="calendar-day normal">۷</div>
+                            <div class="calendar-day normal">۸</div>
+                            <div class="calendar-day normal">۹</div>
+                            <div class="calendar-day normal">۱۰</div>
+                            <div class="calendar-day normal">۱۱</div>
+                            <div class="calendar-day normal">۱۲</div>
+                            <div class="calendar-day normal">۱۳</div>
+                            <div class="calendar-day normal">۱۴</div>
+                            <div class="calendar-day normal">۱۵</div>
+                            <div class="calendar-day normal">۱۶</div>
+                            <div class="calendar-day normal">۱۷</div>
+                            <div class="calendar-day normal">۱۸</div>
+                            <div class="calendar-day normal">۱۹</div>
+                            <div class="calendar-day normal">۲۰</div>
+                            <div class="calendar-day normal">۲۱</div>
+                            <div class="calendar-day normal">۲۲</div>
+                            <div class="calendar-day normal">۲۳</div>
+                            <div class="calendar-day normal">۲۴</div>
+                            <div class="calendar-day normal">۲۵</div>
+                            <div class="calendar-day normal">۲۶</div>
+                            <div class="calendar-day normal">۲۷</div>
+                            <div class="calendar-day normal">۲۸</div>
+                            <div class="calendar-day normal">۲۹</div>
+                            <div class="calendar-day normal">۳۰</div>
+                            <div class="calendar-day normal">۳۱</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="loveMusic">
+        <source src="./mus/hasti.mp3" type="audio/mpeg">
+        مرورگر شما از پخش کننده صدا پشتیبانی نمی‌کند.
+    </audio>
+
+    <script>
+        // ایجاد قلب‌های شناور
+        function createHearts() {
+            const container = document.getElementById('floatingHearts');
+            const heartsCount = 15;
+
+            for (let i = 0; i < heartsCount; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤';
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.top = `${Math.random() * 100}%`;
+                heart.style.animationDelay = `${Math.random() * 5}s`;
+                heart.style.fontSize = `${Math.random() * 15 + 10}px`;
+                heart.style.opacity = Math.random() * 0.5 + 0.1;
+                container.appendChild(heart);
+            }
+        }
+
+        function enterMainPage() {
+            const welcomePage = document.getElementById('welcomePage');
+            const mainPage = document.getElementById('mainPage');
+
+            // انیمیشن خروج صفحه اول
+            welcomePage.classList.add('fade-out');
+
+            // نمایش صفحه اصلی بعد از اتمام انیمیشن
+            setTimeout(() => {
+                welcomePage.style.display = 'none';
+                mainPage.style.display = 'block';
+            }, 800);
+        }
+
+        // پخش کننده موسیقی ساده
+        const music = document.getElementById('loveMusic');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const playPauseIcon = document.getElementById('playPauseIcon');
+        const progressBar = document.getElementById('progressBar');
+        const progress = document.getElementById('progress');
+        const currentTimeEl = document.getElementById('currentTime');
+        const durationEl = document.getElementById('duration');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        let isPlaying = false;
+
+        // فرمت زمان
+        function formatTime(seconds) {
+            let min = Math.floor(seconds / 60);
+            let sec = Math.floor(seconds % 60);
+            return `${min}:${sec < 10 ? '0' : ''}${sec}`;
+        }
+
+        // به روزرسانی پیشرفت
+        function updateProgress() {
+            const { duration, currentTime } = music;
+            const progressPercent = (currentTime / duration) * 100;
+            progress.style.width = `${progressPercent}%`;
+            currentTimeEl.textContent = formatTime(currentTime);
+            durationEl.textContent = formatTime(duration);
+        }
+
+        // تنظیم پیشرفت
+        function setProgress(e) {
+            const width = this.clientWidth;
+            const clickX = e.offsetX;
+            const duration = music.duration;
+            music.currentTime = (clickX / width) * duration;
+        }
+
+        // پخش/توقف
+        function togglePlay() {
+            if (isPlaying) {
+                music.pause();
+                playPauseIcon.classList.remove('fa-pause');
+                playPauseIcon.classList.add('fa-play');
+            } else {
+                music.play().catch(e => {
+                    console.log("خطا در پخش موسیقی: ", e);
+                    alert('لطفاً برای پخش موسیقی، یک فایل MP3 در کد قرار دهید');
+                });
+                playPauseIcon.classList.remove('fa-play');
+                playPauseIcon.classList.add('fa-pause');
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // قبلی
+        function prevTrack() {
+            music.currentTime = 0;
+            if (!isPlaying) {
+                togglePlay();
+            }
+        }
+
+        // بعدی
+        function nextTrack() {
+            music.currentTime = music.duration;
+            if (!isPlaying) {
+                togglePlay();
+            }
+        }
+
+        // رویدادها
+        music.addEventListener('loadedmetadata', () => {
+            durationEl.textContent = formatTime(music.duration);
+        });
+
+        music.addEventListener('timeupdate', updateProgress);
+        music.addEventListener('ended', () => {
+            isPlaying = false;
+            playPauseIcon.classList.remove('fa-pause');
+            playPauseIcon.classList.add('fa-play');
+            progress.style.width = '0%';
+            currentTimeEl.textContent = '0:00';
+        });
+
+        progressBar.addEventListener('click', setProgress);
+        playPauseBtn.addEventListener('click', togglePlay);
+        prevBtn.addEventListener('click', prevTrack);
+        nextBtn.addEventListener('click', nextTrack);
+
+        // ایجاد افکت‌های تعاملی برای تقویم
+        document.addEventListener('DOMContentLoaded', function () {
+            createHearts();
+
+            // اضافه کردن افکت به روزهای تقویم
+            const calendarDays = document.querySelectorAll('.calendar-day:not(.header)');
+            calendarDays.forEach(day => {
+                day.addEventListener('mouseenter', function () {
+                    if (!this.classList.contains('heart')) {
+                        this.style.transform = 'scale(1.15)';
+                        this.style.background = 'rgba(255, 255, 255, 0.2)';
+                    }
+                });
+
+                day.addEventListener('mouseleave', function () {
+                    if (!this.classList.contains('heart')) {
+                        this.style.transform = 'scale(1)';
+                        this.style.background = '';
+                    }
+                });
+            });
+
+            // جلوگیری از زوم
+            document.addEventListener('wheel', function (e) {
+                if (e.ctrlKey) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
+
+            document.addEventListener('touchstart', function (e) {
+                if (e.touches.length > 1) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
+
+            document.addEventListener('gesturestart', function (e) {
+                e.preventDefault();
+            });
+        });
+    </script>
+</body>
+
+</html>
